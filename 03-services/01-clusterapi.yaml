@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: service-demo
+  labels:
+    course: DevOps
+    Trainer: "SivakumarReddy"
+spec:
+  # list of containers
+  containers:
+  - name: service-demo
+    image: nginx
+    ports:
+    - containerPort: 80
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  # list of containers
+  selector:
+    course: DevOps
+    Trainer: "SivakumarReddy"
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
